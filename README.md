@@ -1,2 +1,3 @@
-# promo-landing-page
-Simple Landing Page used to promote content. Hosted on GitHub Pages
+# Promotional Landing Page
+
+This is a simple promotional landing page.

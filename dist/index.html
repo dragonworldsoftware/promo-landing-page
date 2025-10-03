@@ -11,7 +11,7 @@
     <div class="flex flex-col items-center justify-center min-h-screen px-6 text-center space-y-6">
       
       <!-- Logo -->
-      <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full shadow-lg overflow-hidden border-4 border-yellow-400 p-2">
+      <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full shadow-lg overflow-hidden border-4 border-yellow-400 p-2 -mt-8 sm:mt-0">
         <img src="./images/dws-logo.png" alt="Dragon World Software Logo" class="w-full h-full object-cover rounded-full" />
       </div>
 
@@ -23,19 +23,48 @@
       <!-- Tagline -->
       <p class="text-xl sm:text-2xl font-semibold leading-snug max-w-md">
         We have created a financial 
-        <span class="text-emerald-400">miracle!</span>
+        <br class="sm:hidden" />
+        <span id="miracle-text" class="text-emerald-400 text-2xl sm:text-2xl cursor-pointer transition-all duration-300 hover:text-emerald-300">
+          miracle!
+        </span>
       </p>
 
-      <!-- CTA button -->
-      <!-- <a href="#"
-        class="mt-4 px-8 py-3 bg-emerald-500 text-gray-900 text-lg font-semibold rounded-full shadow-md hover:bg-emerald-400 transition">
-        Learn More
-      </a> -->
+      <script>
+        // Animate text on load and repeat
+        window.addEventListener('load', function() {
+          const element = document.getElementById('miracle-text');
+          
+          // Function to trigger shake animation
+          function shakeAnimation() {
+            element.style.animation = 'shake 0.5s ease-in-out';
+            setTimeout(() => {
+              element.style.animation = '';
+            }, 500);
+          }
+          
+          // Initial animation after page load
+          setTimeout(shakeAnimation, 1000);
+          
+          // Repeat every 4 seconds
+          setInterval(shakeAnimation, 4000);
+          
+          // Add click effect
+          element.addEventListener('click', function() {
+            this.classList.add('animate-bounce');
+            setTimeout(() => {
+              this.classList.remove('animate-bounce');
+            }, 1000);
+          });
+        });
+      </script>
 
-      <!-- Optional subtext -->
-      <!-- <p class="text-sm text-gray-400 mt-4 max-w-xs">
-        Empowering traders with innovative software solutions.
-      </p> -->
+      <style>
+        @keyframes shake {
+          0%, 100% { transform: translateX(0); }
+          10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+          20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+      </style>
     </div>
   </body>
 </html>

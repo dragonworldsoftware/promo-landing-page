@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dragon World Software</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.0/gsap.min.js"></script>
   </head>
   <body class="bg-gradient-to-b from-teal-800 via-teal-900 to-gray-900 text-white font-sans">
     <!-- Container -->
@@ -24,24 +26,16 @@
       <p class="text-xl sm:text-2xl font-semibold leading-snug max-w-md">
         We have created a financial 
         <br class="sm:hidden" />
-        <span id="miracle-text" class="text-emerald-400 text-3xl sm:text-2xl animate-bounce">miracle!</span>
+        <!-- No animation class here, we will animate with GSAP -->
+        <span id="miracle-text" class="text-emerald-400 text-3xl sm:text-2xl">
+          miracle!
+        </span>
       </p>
     </div>
 
-    <style>
-      /* Keyframe animation for scaling and bouncing effect */
-      @keyframes bounce {
-        0%, 100% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.2);
-        }
-      }
-
-      #miracle-text {
-        animation: bounce 1s ease-in-out infinite;
-      }
-    </style>
+    <script>
+      // GSAP bounce animation
+      gsap.fromTo("#miracle-text", { scale: 1 }, { scale: 1.2, repeat: -1, yoyo: true, duration: 0.5 });
+    </script>
   </body>
 </html>
